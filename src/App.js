@@ -1,12 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import VideoPlayer from './components/VideoPlayer/VideoPlayer';
-import FileOpener from './components/FileOpener/FileOpener';
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   return (
     <div className="App">
-        <VideoPlayer/>
+      <Dashboard/>
     </div>
   );
 }
