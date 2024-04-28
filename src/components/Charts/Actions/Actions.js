@@ -23,7 +23,7 @@ const Actions = ({actionsData}) => {
             layout={{
                 title: 'Actions Timeline',
                 xaxis: { title: 'Time (seconds)' },
-                yaxis: { title: 'SubAction Name' },
+                yaxis: { visible: false },
                 showlegend: true,
             }}
         />

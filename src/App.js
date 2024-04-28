@@ -2,10 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
 
-function App() {
+function App({fbApp}) {
   return (
     <div className="App">
-      <Dashboard/>
+      <Dashboard fbApp={fbApp}/>
     </div>
   );
 }

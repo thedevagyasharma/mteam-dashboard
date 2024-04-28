@@ -3,7 +3,7 @@ import Papa from 'papaparse';
 let allData = null;
 
 export const getData = async () => {
-    const fileUrl = 'https://raw.githubusercontent.com/thedevagyasharma/mteam-dashboard/main/Data_sample2/timeline-multiplayer%20(32).csv?token=GHSAT0AAAAAACRMQX7EZ4SVEKZ4NFTSIPLYZRMDS3A';
+    const fileUrl = 'https://raw.githubusercontent.com/thedevagyasharma/mteam-dashboard/main/Data_sample2/timeline-multiplayer%20(32).csv';
     const response = await fetch(fileUrl)
     const csvText = await response.text();
 

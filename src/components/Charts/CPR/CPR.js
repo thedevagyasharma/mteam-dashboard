@@ -2,8 +2,7 @@ import React from "react";
 import Plot from "react-plotly.js";
 import { getCPRData } from "../../../services/dataService";
 
-const CPR = (props) => {
-    const cprData = props.cprData;
+const CPR = ({cprData, currentTime}) => {
 
     const lines = cprData.map(cycle => ({
         type: 'scatter',
@@ -13,11 +12,19 @@ const CPR = (props) => {
         line: {color: 'blue', width: 10}
     }));
 
+    const currentTimeMarker = {
+        type: "scatter",
+        mode: "lines", 
+        x: [currentTime, currentTime],
+        y: [0, 2],
+        line: {color: "red", width: 2, dash: "dash"}
+    }
+
     return (
         <>
             <h3>Compressions</h3>
             <Plot 
-                data={lines}
+                data={[...lines, currentTimeMarker]}
                 layout={{
                     xaxis: { title: 'Time (seconds)' },
                     yaxis: { visible: false },
