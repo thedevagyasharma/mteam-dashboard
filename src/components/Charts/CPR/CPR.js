@@ -1,6 +1,5 @@
 import React from "react";
 import Plot from "react-plotly.js";
-import { getCPRData } from "../../../services/dataService";
 
 const CPR = ({cprData, currentTime}) => {
 
