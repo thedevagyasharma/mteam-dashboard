@@ -6,11 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import firebaseConfig from './util/firebaseConfig';
 
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getStorage } from 'firebase/storage';
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

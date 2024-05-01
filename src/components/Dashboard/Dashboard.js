@@ -32,7 +32,7 @@ const Dashboard = ({fbApp}) => {
           console.log('CPR Data has been stored:', cprData);
           
         }
-      }, [vitalData, actionData]);
+      }, [vitalData, actionData, cprData]);
 
     return (
         <>
@@ -42,7 +42,7 @@ const Dashboard = ({fbApp}) => {
             <VideoPlayer fbApp={fbApp} currentTime={currentTime} setCurrentTime={setCurrentTime} duration={duration} setDuration={setDuration} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
             <Actions actionsData={actionData} />
             <CPR cprData={cprData} currentTime={currentTime} />
-            <CognitiveLoad />
+            <CognitiveLoad currentTime={currentTime}/>
         </div>
         </>
     );

@@ -1,5 +1,5 @@
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
-import React, { useState, useRef, useEffect, useDebugValue } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import FormRange from 'react-bootstrap/FormRange'
 
 const VideoPlayer = ({fbApp, currentTime, setCurrentTime, duration, setDuration, isPlaying, setIsPlaying}) => {
@@ -10,6 +10,7 @@ const VideoPlayer = ({fbApp, currentTime, setCurrentTime, duration, setDuration,
   useEffect(()=>{
     const fetchVideoUrl = async () => {
       const storage = getStorage(fbApp)
+      // const videoRef = null;
       const videoRef = ref(storage, 'gs://mteam-dashboard.appspot.com/Data_Sample2/video/video.mp4')
       try{
         const url = await getDownloadURL(videoRef);
