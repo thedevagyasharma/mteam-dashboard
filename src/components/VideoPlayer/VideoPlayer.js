@@ -1,6 +1,7 @@
 import { getStorage, ref, getDownloadURL } from 'firebase/storage';
 import React, { useState, useRef, useEffect } from 'react';
-import FormRange from 'react-bootstrap/FormRange'
+import { Button } from 'react-bootstrap';
+import Slider from '../Slider/Slider';
 
 const VideoPlayer = ({fbApp, currentTime, setCurrentTime, duration, setDuration, isPlaying, setIsPlaying}) => {
 
@@ -58,22 +59,15 @@ const VideoPlayer = ({fbApp, currentTime, setCurrentTime, duration, setDuration,
     
     return (
       <>
-        <div style={{ maxWidth: '800px', maxHeight: '600px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '800px', maxHeight: '600px', margin:' 20px 0 '}}>
           <video
             ref={videoRef}
             src={videoUrl}
             onLoadedMetadata={handleLoadedMetadata}
             style={{ width: '100%', height: 'auto' }}
           ></video>
-          <FormRange
-            min={0}
-            max={duration}
-            value={currentTime}
-            onChange={handleSeek}
-          />
-          <button onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
-          <p>Current Time: {currentTime}</p>
-          <p>Duration: {duration}</p>
+          <Slider duration={duration?duration:0} handleSeek={handleSeek} currentTime={currentTime?currentTime:0}/>
+          <Button onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</Button>
         </div>
       </>
       );

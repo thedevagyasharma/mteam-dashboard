@@ -5,7 +5,7 @@ import sensor from '../../../Data_sample2/sensor/umich2/1703183551_1be99daa2ff85
 
 
 
-const CognitiveLoad = ({currentTime}) => {
+const CognitiveLoad = ({currentTime, duration}) => {
 
     const [chartData, setChartData] = useState({timestamps: [], cogLoad: []})
 
@@ -60,7 +60,7 @@ const CognitiveLoad = ({currentTime}) => {
                 }, currentTimeMarker
             ]}
             layout={{
-                xaxis: { title: 'Time (seconds)' },
+                xaxis: { title: 'Time (seconds)', range:[0, duration] },
                 yaxis: { visible: false },
                 showlegend: false,
                 height: 300,

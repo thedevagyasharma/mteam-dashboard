@@ -4,6 +4,7 @@ import CPR from '../Charts/CPR/CPR';
 import CognitiveLoad from '../Charts/CognitiveLoad/CognitiveLoad';
 import Actions from '../Charts/Actions/Actions';
 import { getActionData, getCPRData, getData, getDuration, getVitalData } from '../../services/dataService';
+import PatientVitals from '../PatientVitals/PatientVitals';
 
 const Dashboard = ({fbApp}) => {
     const [vitalData, setVitalData] = useState([]);
@@ -40,9 +41,10 @@ const Dashboard = ({fbApp}) => {
             
             <h1>mTeam Dashboard</h1> 
             <VideoPlayer fbApp={fbApp} currentTime={currentTime} setCurrentTime={setCurrentTime} duration={duration} setDuration={setDuration} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
-            <Actions actionsData={actionData} />
-            <CPR cprData={cprData} currentTime={currentTime} />
-            <CognitiveLoad currentTime={currentTime}/>
+            <PatientVitals currentTime={currentTime} vitalData={vitalData}/>
+            <Actions actionsData={actionData} duration={duration}/>
+            <CPR cprData={cprData} duration={duration} currentTime={currentTime} />
+            <CognitiveLoad currentTime={currentTime} duration={duration}/>
         </div>
         </>
     );

@@ -1,7 +1,7 @@
 import React from "react";
 import Plot from "react-plotly.js";
 
-const CPR = ({cprData, currentTime}) => {
+const CPR = ({cprData, currentTime, duration}) => {
 
     const lines = cprData.map(cycle => ({
         type: 'scatter',
@@ -25,7 +25,7 @@ const CPR = ({cprData, currentTime}) => {
             <Plot 
                 data={[...lines, currentTimeMarker]}
                 layout={{
-                    xaxis: { title: 'Time (seconds)' },
+                    xaxis: { title: 'Time (seconds)', range:[0, duration] },
                     yaxis: { visible: false },
                     showlegend: false,
                     height: 200,
