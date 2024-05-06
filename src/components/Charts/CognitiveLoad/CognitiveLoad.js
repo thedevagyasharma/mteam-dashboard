@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Plot from 'react-plotly.js';
+import { Row } from "react-bootstrap";
 
 import sensor from '../../../Data_sample2/sensor/umich2/1703183551_1be99daa2ff8508df747e0da6ce673b93cf8865a/sensor_1703183551_1be99daa2ff8508df747e0da6ce673b93cf8865a.json'
 
@@ -7,7 +8,8 @@ import sensor from '../../../Data_sample2/sensor/umich2/1703183551_1be99daa2ff85
 
 const CognitiveLoad = ({currentTime, duration}) => {
 
-    const [chartData, setChartData] = useState({timestamps: [], cogLoad: []})
+    const [chartData, setChartData] = useState({timestamps: [], cogLoad: []});
+    const [currentLoad, setCurrentLoad] = useState(null);
 
     useEffect(() => {
         const data = sensor.data;
@@ -20,11 +22,18 @@ const CognitiveLoad = ({currentTime, duration}) => {
 
             const minTimestamp = Math.min(...timestamps);
             const normalizedTimestamps = timestamps.map(ts => ts - minTimestamp);
-            setChartData({normalizedTimestamps, cogLoad})
+            setChartData({timestamps: normalizedTimestamps, cogLoad: cogLoad});
         }
     }, []);
 
-
+    useEffect(() => {
+        // Calculate current load value at current time
+        if (chartData.timestamps.length > 0) {
+            const index = chartData.timestamps.findIndex(ts => ts >= currentTime);
+            const loadValue = index !== -1 ? chartData.cogLoad[index] : null;
+            setCurrentLoad(loadValue*100);
+        }
+    }, [currentTime, chartData]);
 
     const currentTimeMarker = {
         type: "scatter",
@@ -50,6 +59,9 @@ const CognitiveLoad = ({currentTime, duration}) => {
             <input type = 'checkbox' label='User 1'></input>
             <label>User 4</label>
          </div> */}
+         <Row>
+            Current Load: {currentLoad !== null ? currentLoad.toFixed(2) + '%' : "N/A"}
+         </Row>
          <Plot 
             data={[
                 {   x: chartData.timestamps,
@@ -63,10 +75,9 @@ const CognitiveLoad = ({currentTime, duration}) => {
                 xaxis: { title: 'Time (seconds)', range:[0, duration] },
                 yaxis: { visible: false },
                 showlegend: false,
-                height: 300,
-                width: '100%'
+                autosize: true
             }}
-         
+            
          />
         </>
     );

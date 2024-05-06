@@ -6,6 +6,8 @@ import Actions from '../Charts/Actions/Actions';
 import { getActionData, getCPRData, getData, getDuration, getVitalData } from '../../services/dataService';
 import PatientVitals from '../PatientVitals/PatientVitals';
 
+import { Col, Row } from 'react-bootstrap';
+
 const Dashboard = ({fbApp}) => {
     const [vitalData, setVitalData] = useState([]);
     const [actionData, setActionData] = useState([]);
@@ -39,12 +41,25 @@ const Dashboard = ({fbApp}) => {
         <>
         <div>
             
-            <h1>mTeam Dashboard</h1> 
-            <VideoPlayer fbApp={fbApp} currentTime={currentTime} setCurrentTime={setCurrentTime} duration={duration} setDuration={setDuration} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
-            <PatientVitals currentTime={currentTime} vitalData={vitalData}/>
-            <Actions actionsData={actionData} duration={duration}/>
-            <CPR cprData={cprData} duration={duration} currentTime={currentTime} />
-            <CognitiveLoad currentTime={currentTime} duration={duration}/>
+            <h1>mTeam Dashboard</h1>
+            <Row>
+                <Col xs='6'>
+                    <VideoPlayer fbApp={fbApp} currentTime={currentTime} setCurrentTime={setCurrentTime} duration={duration} setDuration={setDuration} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
+                </Col>
+                <Col xs='6'>
+                    <Actions actionsData={actionData} duration={duration}/>
+                </Col>
+            </Row>
+            <Row className='my-5'>
+                <PatientVitals currentTime={currentTime} vitalData={vitalData}/>
+            </Row>
+            
+            <Row>
+                <CPR cprData={cprData} duration={duration} currentTime={currentTime} />
+            </Row>
+            <Row>
+                <CognitiveLoad currentTime={currentTime} duration={duration}/>
+            </Row>
         </div>
         </>
     );

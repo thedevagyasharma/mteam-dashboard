@@ -16,7 +16,7 @@ const CPR = ({cprData, currentTime, duration}) => {
         mode: "lines", 
         x: [currentTime, currentTime],
         y: [0, 2],
-        line: {color: "red", width: 2, dash: "dash"}
+        line: {color: "red", width: 2}
     }
 
     return (
@@ -28,8 +28,7 @@ const CPR = ({cprData, currentTime, duration}) => {
                     xaxis: { title: 'Time (seconds)', range:[0, duration] },
                     yaxis: { visible: false },
                     showlegend: false,
-                    height: 200,
-                    width: '100%'
+                    autosize:true,
                 }}
             />
         </>

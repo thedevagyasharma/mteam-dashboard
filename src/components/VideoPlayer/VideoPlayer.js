@@ -59,7 +59,7 @@ const VideoPlayer = ({fbApp, currentTime, setCurrentTime, duration, setDuration,
     
     return (
       <>
-        <div style={{ maxWidth: '800px', maxHeight: '600px', margin:' 20px 0 '}}>
+        <div style={{ margin:'  '}}>
           <video
             ref={videoRef}
             src={videoUrl}

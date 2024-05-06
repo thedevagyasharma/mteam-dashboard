@@ -63,7 +63,7 @@ const PatientVitals = ({currentTime, vitalData}) => {
 
     return(
         <>
-        <h3>Patient Vitals</h3>
+        {/* <h3>Patient Vitals</h3> */}
         <Row>
             <Col>
             <Row>

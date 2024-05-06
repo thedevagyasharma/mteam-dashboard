@@ -88,4 +88,3 @@ export const getDuration = () => {
     }
     return allData[allData.length - 1]['timestamp_seconds'];
 }
-
